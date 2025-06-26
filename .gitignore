@@ -6,6 +6,7 @@ npm-debug.log*
 
 # Playwright test output
 test-results/
+reports/
 playwright-report/
 *.webm
 *.png
