@@ -1,0 +1,19 @@
+{
+  "name": "minute_media",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "dotenv": "^16.5.0",
+    "playwright": "^1.53.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

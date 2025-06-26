@@ -1,0 +1,32 @@
+# Node
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Playwright test output
+test-results/
+playwright-report/
+*.webm
+*.png
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDEs/editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment / config
+.env
+.env.local
+.env.*.local
+
+# Mac generated files
+__MACOSX/
