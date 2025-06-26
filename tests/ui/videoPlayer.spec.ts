@@ -15,7 +15,7 @@ test.describe('Video Player UI Tests', () => {
   test('Player should play the video when play is triggered', async () => {
     await playerPage.playVideo();
     await expect(await playerPage.isPlaying()).toBe(true);
-       expect(consoleErrors).toEqual([]);
+    expect(consoleErrors).toEqual([]);
   });
 
   test('Player should pause the video when pause is triggered', async () => {

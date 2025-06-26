@@ -41,10 +41,9 @@ export class VideoPlayerPage {
   await target.scrollIntoViewIfNeeded();
 }
 
-  async scrollPage() {
-    await this.scrollTarget.scrollIntoViewIfNeeded();
-    await this.page.waitForTimeout(500); // allow scroll event to fire
-  }
+//   async scrollPage() {
+//     await this.scrollTarget.scrollIntoViewIfNeeded();
+//   }
 
   async getCurrentVideoTime(): Promise<number> {
     return await this.video.evaluate((video: HTMLVideoElement) => video.currentTime);
