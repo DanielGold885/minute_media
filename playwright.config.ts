@@ -1,11 +1,12 @@
 import { defineConfig } from '@playwright/test';
-import { BASE_URL, DEFAULT_TIMEOUT } from './config/constants';
+import { BASE_URL } from './config/constants';
+import { DEFAULT_TIMEOUT } from './config/timeouts';
 
 export default defineConfig({
   timeout: DEFAULT_TIMEOUT,
   use: {
     baseURL: BASE_URL,
-    headless: false,
+    headless: true,
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
     video: 'retain-on-failure',
