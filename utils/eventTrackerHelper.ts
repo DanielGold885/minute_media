@@ -15,10 +15,13 @@ async waitForEvent(type: string) {
       req.method() === 'POST'
     ) {
       const data = req.postData();
+      if (!data) return false;
+
       try {
-        const json = JSON.parse(data || '{}');
+        const json = JSON.parse(data);
         return json.type === type;
       } catch (e) {
+        console.warn(`Failed to parse POST data: ${data}`, e);
         return false;
       }
     }
