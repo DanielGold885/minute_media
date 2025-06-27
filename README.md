@@ -5,7 +5,7 @@ This project includes UI and API automation tests for the Minute Media video pla
 ## 🔧 Prerequisites
 
 - Node.js (v18+)
-- npm or yarn
+- npm
 - Docker & Docker Compose (for running the app locally)
 
 ## 🚀 Run the Application Locally

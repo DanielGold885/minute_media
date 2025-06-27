@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Playwright Tests
 
 on:
   workflow_dispatch:
@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout code
+      - name: ⬇️ Checkout code
         uses: actions/checkout@v3
 
-      - name: 🟢 Setup Node.js
+      - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -19,12 +19,33 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: ▶️ Run Playwright tests
-        run: npx playwright test
+      - name: 🐳 Start app with Docker Compose
+        run: |
+          docker compose -f app/docker-compose.yml up --build -d
+          echo "*********** Waiting for the app to be ready... ***********"
+          for i in {1..10}; do
+            curl -s http://localhost:3000 && break
+            echo "Retrying in 2s..."
+            sleep 2
+          done
+          echo "*********** Player APP is up and running... ***********"
 
-      - name: 📤 Upload Playwright HTML Report
+      - name: 🧪 Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: 🚀 Run automation tests
+        run: npx playwright test --reporter=html
+
+      - name: 📤 Upload test report artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report
+
+      - name: 📂 Upload report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: playwright-report
