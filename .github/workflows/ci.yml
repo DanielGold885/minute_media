@@ -31,21 +31,20 @@ jobs:
           echo "*********** Player APP is up and running... ***********"
 
       - name: 🧪 Install Playwright
-        run: |
-          npx playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - name: 🚀 Run automation tests
-        run: |
-          npx playwright test --reporter=html  
+        run: npx playwright test --reporter=html
 
-      - name: 📤 Upload test report to GH pages
+      - name: 📤 Upload test report artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report
 
-                - name: 📂 Upload report to GitHub Pages
+      - name: 📂 Upload report to GitHub Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
