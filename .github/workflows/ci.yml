@@ -34,9 +34,9 @@ jobs:
         run: |
           npx playwright install --with-deps
 
-      - name: 🚀 Run Automation tests
+      - name: 🚀 Run automation tests
         run: |
-          npx playwright test  
+          npx playwright test --reporter=html  
 
       - name: 📤 Upload test report (optional)
         if: always()
