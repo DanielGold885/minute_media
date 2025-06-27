@@ -38,9 +38,15 @@ jobs:
         run: |
           npx playwright test --reporter=html  
 
-      - name: 📤 Upload test report (optional)
+      - name: 📤 Upload test report to GH pages
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: playwright-report
           path: playwright-report
+
+                - name: 📂 Upload report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: playwright-report
