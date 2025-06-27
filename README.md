@@ -39,6 +39,11 @@ After running tests, open the Playwright report:
 npx playwright show-report
 ```
 
+## 📊 Live Test Report
+
+👉 [Click here to view the latest Playwright test report](https://danielgold885.github.io/minute_media/)
+
+
 ## 📁 Project Structure
 
 ```markdown
