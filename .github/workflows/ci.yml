@@ -22,17 +22,20 @@ jobs:
       - name: 🐳 Start app with Docker Compose
         run: |
           docker compose -f app/docker-compose.yml up --build -d
-          echo "Waiting for the app to be ready..."
+          echo "*********** Waiting for the app to be ready...************"
           for i in {1..10}; do
             curl -s http://localhost:3000 && break
             echo "Retrying in 2s..."
             sleep 2
           done
 
-      - name: 🧪 Run Playwright tests
+      - name: 🧪 Install Playwright
         run: |
           npx playwright install --with-deps
-          npx playwright test
+
+      - name: 🚀 Run Automation tests
+        run: |
+          npx playwright test  
 
       # - name: 📤 Upload test report (optional)
       #   if: always()
