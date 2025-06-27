@@ -22,12 +22,13 @@ jobs:
       - name: 🐳 Start app with Docker Compose
         run: |
           docker compose -f app/docker-compose.yml up --build -d
-          echo "*********** Waiting for the app to be ready...************"
+          echo "*********** Waiting for the app to be ready... ***********"
           for i in {1..10}; do
             curl -s http://localhost:3000 && break
             echo "Retrying in 2s..."
             sleep 2
           done
+          echo "*********** Player APP is up and running... ***********"
 
       - name: 🧪 Install Playwright
         run: |
@@ -37,9 +38,9 @@ jobs:
         run: |
           npx playwright test  
 
-      # - name: 📤 Upload test report (optional)
-      #   if: always()
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: playwright-report
-      #     path: playwright-report
+      - name: 📤 Upload test report (optional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report
